@@ -82,7 +82,7 @@ public class PubPricesTest {
     @Test
     @DisplayName("When they order a drink which is not on the menu, then they are refused.")
     public void testThatADrinkNotInTheSortimentGivesError() throws Exception {
-        assertThrows(RuntimeException.class, () -> pub.computeCost("sanfranciscosling", false, 1));
+        assertThrows(UnknownDrinkException.class, () -> pub.computeCost("sanfranciscosling", false, 1));
     }
 
     @Nested
@@ -91,7 +91,7 @@ public class PubPricesTest {
         @Test
         @DisplayName("and the order is for cocktails, then they are refused.")
         public void testCanBuyAtMostTwoDrinksInOneGo() throws Exception {
-            assertThrows(RuntimeException.class, () -> pub.computeCost(Pub.BACARDI_SPECIAL, false, 3));
+            assertThrows(TooManyDrinksException.class, () -> pub.computeCost(Pub.BACARDI_SPECIAL, false, 3));
         }
 
         @Test
