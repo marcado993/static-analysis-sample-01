@@ -97,7 +97,8 @@ public class PubPricesTest {
         @Test
         @DisplayName("and the order is for beers, then they are served.")
         public void testCanOrderMoreThanTwoBeers() throws Exception {
-            pub.computeCost(Pub.ONE_BEER, false, 5);
+            int actualPrice = pub.computeCost(Pub.ONE_BEER, false, 5);
+            assertEquals(74 * 5, actualPrice);
         }
     }
 }
